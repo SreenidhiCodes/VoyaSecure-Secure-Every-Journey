@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tourist Helpline Finder</title>
+
+<style>
+body{font-family:sans-serif;background:#f0f4f8;margin:0;padding:0;}
+.container{
+  max-width:600px;
+  margin:80px auto;
+  background:#fff;
+  padding:25px;
+  border-radius:14px;
+  box-shadow:0 12px 30px rgba(0,80,160,0.15);
+}
+h1{text-align:center;margin-bottom:30px;color:#0b4f9c;}
+.search-box{position:relative;}
+.search-box input{
+  width:100%;
+  padding:12px;
+  font-size:16px;
+  border-radius:8px;
+  border:1px solid #b5d7ff;
+}
+.dropdown{
+  position:absolute;
+  width:100%;
+  background:#fff;
+  border-radius:8px;
+  margin-top:4px;
+  box-shadow:0 8px 18px rgba(0,0,0,0.1);
+  max-height:220px;
+  overflow-y:auto;
+  z-index:10;
+}
+.dropdown div{padding:10px;cursor:pointer;}
+.dropdown div:hover{background:#e9f3ff;}
+.details{
+  margin-top:20px;
+  background:#f5faff;
+  padding:18px;
+  border-radius:10px;
+  display:none;
+}
+.number{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#fff;
+  padding:10px;
+  margin-top:10px;
+  border-radius:8px;
+  border:1px solid #d6e8ff;
+}
+.number strong{color:#0b4f9c}
+.number button{
+  background:#4da3ff;color:#fff;border:none;padding:6px 12px;border-radius:6px;cursor:pointer;
+}
+.number button:hover{background:#2f8cff;}
+
+</style>
+</head>
+
+<body>
+<div class="container">
+  <h1>Tourist Helpline Finder</h1>
+
+  <div class="search-box">
+    <input id="search" placeholder="Search tourist place...">
+    <div id="dropdown" class="dropdown"></div>
+  </div>
+
+  <div id="details" class="details"></div>
+</div>
+
+<script>
+const places = [
+{ name:"Baga Beach", contacts:[
+  {label:"Tourist Police",number:"0832-2424004"},
+  {label:"Tourism Helpline (India)",number:"1363"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Charminar", contacts:[
+  {label:"Tourist Police",number:"040-27852464"},
+  {label:"Telangana Tourism",number:"1800-425-46464"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Connaught Place", contacts:[
+  {label:"Delhi Tourism",number:"1800-11-1363"},
+  {label:"Police Emergency",number:"112"},
+  {label:"Women Helpline",number:"181"} ]},
+
+{ name:"Tirupati", contacts:[
+  {label:"TTD Temple Helpline",number:"0877-2263433"},
+  {label:"AP Tourism",number:"1800-425-46464"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Munnar", contacts:[
+  {label:"Kerala Tourism",number:"1800-425-4747"},
+  {label:"Tourist Police",number:"0484-2360188"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Alleppey", contacts:[
+  {label:"Kerala Tourism",number:"1800-425-4747"},
+  {label:"Tourist Police",number:"0484-2360188"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Kumarakom", contacts:[
+  {label:"Kerala Tourism",number:"1800-425-4747"},
+  {label:"Tourist Police",number:"0484-2360188"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Ooty", contacts:[
+  {label:"TN Tourism",number:"1800-425-31111"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Coorg", contacts:[
+  {label:"Karnataka Tourism",number:"1800-425-9666"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Kodaikanal", contacts:[
+  {label:"TN Tourism",number:"1800-425-31111"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Araku Valley", contacts:[
+  {label:"AP Tourism",number:"1800-425-46464"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Borra Caves", contacts:[
+  {label:"AP Tourism",number:"1800-425-46464"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Varkala", contacts:[
+  {label:"Kerala Tourism",number:"1800-425-4747"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Madurai", contacts:[
+  {label:"TN Tourism",number:"1800-425-31111"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Rameswaram", contacts:[
+  {label:"TN Tourism",number:"1800-425-31111"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Ramappa Temple", contacts:[
+  {label:"Telangana Tourism",number:"1800-425-46464"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Hampi", contacts:[
+  {label:"Karnataka Tourism",number:"1800-425-9666"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Mysore Palace", contacts:[
+  {label:"Karnataka Tourism",number:"1800-425-9666"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Gokarna", contacts:[
+  {label:"Karnataka Tourism",number:"1800-425-9666"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Chikmagalur", contacts:[
+  {label:"Karnataka Tourism",number:"1800-425-9666"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Red Fort", contacts:[
+  {label:"Delhi Tourism",number:"1800-11-1363"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Qutub Minar", contacts:[
+  {label:"Delhi Tourism",number:"1800-11-1363"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Agra Fort", contacts:[
+  {label:"Tourist Police (Agra)",number:"0562-2226431"},
+  {label:"UP Tourism",number:"1800-180-1363"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Panch Mahal", contacts:[
+  {label:"UP Tourism",number:"1800-180-1363"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Mathura", contacts:[
+  {label:"UP Tourism",number:"1800-180-1363"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Vrindavan", contacts:[
+  {label:"UP Tourism",number:"1800-180-1363"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Haridwar", contacts:[
+  {label:"Uttarakhand Tourism",number:"1364"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Mussoorie", contacts:[
+  {label:"Uttarakhand Tourism",number:"1364"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Jim Corbett National Park", contacts:[
+  {label:"Uttarakhand Tourism",number:"1364"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Dal Lake", contacts:[
+  {label:"J&K Tourism",number:"1800-890-1313"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Gulmarg", contacts:[
+  {label:"J&K Tourism",number:"1800-890-1313"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Amarnath Cave", contacts:[
+  {label:"SASB Helpline",number:"0194-2313140"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Chandigarh Rock Garden", contacts:[
+  {label:"Chandigarh Tourism",number:"0172-2702955"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Ranthambore Fort", contacts:[
+  {label:"Rajasthan Tourism",number:"1800-180-6127"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Jaisalmer Fort", contacts:[
+  {label:"Rajasthan Tourism",number:"1800-180-6127"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Pushkar Lake", contacts:[
+  {label:"Rajasthan Tourism",number:"1800-180-6127"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Victoria Memorial", contacts:[
+  {label:"WB Tourism",number:"1800-212-1650"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Konark Sun Temple", contacts:[
+  {label:"Odisha Tourism",number:"1800-203-1400"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Jagannath Temple", contacts:[
+  {label:"Temple Administration",number:"06752-222001"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Bodh Gaya", contacts:[
+  {label:"Bihar Tourism",number:"1800-345-6777"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Gateway of India", contacts:[
+  {label:"Maharashtra Tourism",number:"1800-229930"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Sabarmati Ashram", contacts:[
+  {label:"Gujarat Tourism",number:"1800-203-1111"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Amber Fort", contacts:[
+  {label:"Rajasthan Tourism",number:"1800-180-6127"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Pachmarhi Caves", contacts:[
+  {label:"MP Tourism",number:"1800-233-7777"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Dumas Beach", contacts:[
+  {label:"Gujarat Tourism",number:"1800-203-1111"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Hawa Mahal", contacts:[
+  {label:"Rajasthan Tourism",number:"1800-180-6127"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Marine Drive", contacts:[
+  {label:"Mumbai Police",number:"112"},
+  {label:"Maharashtra Tourism",number:"1800-229930"} ]},
+
+{ name:"Nalanda Ruins", contacts:[
+  {label:"Bihar Tourism",number:"1800-345-6777"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Puri Beach", contacts:[
+  {label:"Odisha Tourism",number:"1800-203-1400"},
+  {label:"Puri Police",number:"06752-222001"},
+  {label:"Emergency (Police)",number:"112"} ]},
+
+{ name:"Rock Garden Ranchi", contacts:[
+  {label:"Jharkhand Tourism",number:"1800-890-6393"},
+  {label:"Emergency (Police)",number:"112"} ]}
+];
+
+const search=document.getElementById("search");
+const dropdown=document.getElementById("dropdown");
+const details=document.getElementById("details");
+
+search.oninput=()=>{
+  dropdown.innerHTML="";
+  const v=search.value.toLowerCase();
+  if(!v)return;
+  places.filter(p=>p.name.toLowerCase().includes(v))
+    .forEach(p=>{
+      const d=document.createElement("div");
+      d.textContent=p.name;
+      d.onclick=()=>selectPlace(p);
+      dropdown.appendChild(d);
+    });
+};
+
+function selectPlace(place){
+  dropdown.innerHTML="";
+  search.value=place.name;
+  details.style.display="block";
+  details.innerHTML=`<h2>${place.name}</h2>`;
+  place.contacts.forEach(c=>{
+    details.innerHTML+=`
+    <div class="number">
+      <span><strong>${c.label}:</strong> ${c.number}</span>
+      <button onclick="navigator.clipboard.writeText('${c.number}')">Copy</button>
+    </div>`;
+  });
+}
+</script>
+</body>
+</html>

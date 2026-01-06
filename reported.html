@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reported Cases | VoyaSecure</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* ---------------- Base Page ---------------- */
+    html, body {
+      height: 100%;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(180deg, #fef6f0 0%, #fbe8dc 45%, #f6e2d6 100%);
+      color: #2b2b2b;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 40px 0 20px;
+      font-size: 2.6rem;
+      font-weight: 600;
+      color: #3a2c28;
+      letter-spacing: -0.6px;
+    }
+
+    /* ---------------- Filter Panel ---------------- */
+    .filter-panel {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      padding: 12px 16px;
+      border-bottom: 1px solid #e0cfc1;
+    }
+
+    .filter-panel input, .filter-panel select {
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid #d4b79d;
+      outline: none;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .filter-panel input:focus, .filter-panel select:focus {
+      border-color: #c97c3d;
+      box-shadow: 0 0 6px rgba(201,124,61,0.3);
+    }
+
+    .sort-toggle {
+      cursor: pointer;
+      padding: 8px 14px;
+      background: linear-gradient(135deg, #ffd2b8, #ffe2cf);
+      border-radius: 8px;
+      font-weight: 500;
+      border: none;
+      box-shadow: 0 3px 8px rgba(236,95,14,0.25);
+      transition: all 0.2s;
+    }
+    .sort-toggle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 12px rgba(236,95,14,0.35);
+    }
+
+    /* ---------------- Reports Container ---------------- */
+    .reports-container {
+      max-width: 950px;
+      margin: 20px auto 60px;
+      padding: 0 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    /* ---------------- Glass Card ---------------- */
+    .report-card {
+      background: rgba(255,255,255,0.92);
+      padding: 22px 24px;
+      border-radius: 16px;
+      box-shadow: 0 10px 24px rgba(168,126,96,0.18), inset 0 1px 0 rgba(255,255,255,0.6);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      backdrop-filter: blur(6px);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.4s forwards;
+    }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .report-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 36px rgba(168,126,96,0.28), inset 0 1px 0 rgba(255,255,255,0.6);
+    }
+
+    .location {
+      font-size: 20px;
+      font-weight: 600;
+      color: #4a2f28;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .meta {
+      font-size: 14px;
+      color: #8a6f63;
+      margin: 6px 0 4px;
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .desc {
+      margin-top: 10px;
+      line-height: 1.7;
+      font-size: 15px;
+      color: #2b2b2b;
+    }
+
+    /* ---------------- Severity Badge ---------------- */
+    .severity {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 6px 14px;
+      border-radius: 18px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #fff;
+    }
+    .severity.High { background: linear-gradient(135deg, #e74c3c, #f39c12); }
+    .severity.Medium { background: linear-gradient(135deg, #e67e22, #f1c40f); }
+    .severity.Low { background: linear-gradient(135deg, #27ae60, #2ecc71); }
+
+    /* ---------------- Back To Top ---------------- */
+    body {
+  margin: 0;
+  padding: 0;
+}
+
+
+.helpline-btn {
+  position: fixed;
+  top: 0;           /* Pushes it to the very top */
+  right: 0;         /* Pushes it to the far right */
+  z-index: 9999;    /* Ensures it's above everything */
+  background: #ff4d4d;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 15px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: pulse 1.5s infinite;
+}
+
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+  </style>
+</head>
+
+<body>
+
+<h1>Reported Cases</h1>
+
+<!-- Filter Panel -->
+<div class="filter-panel">
+  <input type="text" id="searchInput" placeholder="Search Place or State">
+  <select id="filterProblem">
+    <option value="">All Problems</option>
+  </select>
+  <select id="filterSeverity">
+    <option value="">All Severities</option>
+    <option value="High">High</option>
+    <option value="Medium">Medium</option>
+    <option value="Low">Low</option>
+  </select>
+  <button id="sortToggle" class="sort-toggle">Sort: Newest</button>
+  
+  <button class="helpline-btn" onclick="window.location.href='helpline.html'">
+  🚨 Helpline
+</button>
+</div>
+
+<!-- Reports Grid -->
+<div class="reports-container" id="reportsGrid">
+  <p>Loading reports...</p>
+</div>
+
+<!-- Back To Top Button -->
+<button id="backToTop">⬆️</button>
+
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+  const grid = document.getElementById("reportsGrid");
+  const searchInput = document.getElementById("searchInput");
+  const filterProblem = document.getElementById("filterProblem");
+  const filterSeverity = document.getElementById("filterSeverity");
+  const sortToggle = document.getElementById("sortToggle");
+  const backBtn = document.getElementById("backToTop");
+
+  let reports = [];
+  let newestFirst = true;
+
+  // Load reports
+  async function loadReports() {
+    try {
+      const res = await fetch("/api/reports?" + new Date().getTime());
+      reports = await res.json();
+      populateProblemFilter();
+      renderReports();
+    } catch (err) {
+      console.error(err);
+      grid.innerHTML = "<p>Unable to load reports.</p>";
+    }
+  }
+
+  // Populate problem type dropdown dynamically
+  function populateProblemFilter() {
+    const types = [...new Set(reports.map(r => r.problemType))].sort();
+    filterProblem.innerHTML = '<option value="">All Problems</option>';
+    types.forEach(t => {
+      const opt = document.createElement("option");
+      opt.value = t;
+      opt.textContent = t;
+      filterProblem.appendChild(opt);
+    });
+  }
+
+  // Render filtered/sorted reports
+  function renderReports() {
+    grid.innerHTML = "";
+    let filtered = [...reports];
+
+    // Search by place/state
+    const search = searchInput.value.trim().toLowerCase();
+    if (search) {
+      filtered = filtered.filter(r =>
+        (r.place && r.place.toLowerCase().includes(search)) ||
+        (r.state && r.state.toLowerCase().includes(search))
+      );
+    }
+
+    // Filter problem type
+    const prob = filterProblem.value;
+    if (prob) filtered = filtered.filter(r => r.problemType === prob);
+
+    // Filter severity
+    const sev = filterSeverity.value;
+    if (sev) filtered = filtered.filter(r => r.severity === sev);
+
+    // Sort
+    filtered.sort((a,b) => {
+      return newestFirst
+        ? new Date(b.reportedAt) - new Date(a.reportedAt)
+        : new Date(a.reportedAt) - new Date(b.reportedAt);
+    });
+
+    if (!filtered.length) {
+      grid.innerHTML = "<p>No reports found.</p>";
+      return;
+    }
+
+    filtered.forEach((r, i) => {
+      const card = document.createElement("div");
+      card.className = "report-card";
+      card.style.animationDelay = `${i*0.05}s`; // stagger fade-in
+
+      const severityClass = r.severity || "Low";
+
+      // Optional icons for problem type
+      let icon = "";
+      switch(r.problemType){
+        case "Scam / Fraud": icon = "🕵️"; break;
+        case "Money Laundering": icon = "💵"; break;
+        case "Theft": icon = "💰"; break;
+        case "Harassment": icon = "⚠️"; break;
+        case "Safety Risk": icon = "🚨"; break;
+        default: icon = "❗"; break;
+      }
+
+      card.innerHTML = `
+        <div class="location">${icon} ${r.place || "Unknown Place"}, ${r.state || ""}</div>
+        <div class="meta">${r.problemType || "Issue"} | ${r.incidentDate || "Date not specified"}</div>
+        <div class="desc">${r.description || "No description provided."}</div>
+        <div class="severity ${severityClass}">${r.severity || "Low"}</div>
+        <div class="meta"><em>Reported At: ${new Date(r.reportedAt).toLocaleString()}</em></div>
+        <div class="meta">Coordinates: ${r.coordinates.lat}, ${r.coordinates.lng}</div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  // Event listeners
+  searchInput.addEventListener("input", renderReports);
+  filterProblem.addEventListener("change", renderReports);
+  filterSeverity.addEventListener("change", renderReports);
+  sortToggle.addEventListener("click", () => {
+    newestFirst = !newestFirst;
+    sortToggle.textContent = `Sort: ${newestFirst ? "Newest" : "Oldest"}`;
+    renderReports();
+  });
+
+  // Back to top button
+  backBtn.addEventListener("click", () => window.scrollTo({top:0, behavior:"smooth"}));
+  window.addEventListener("scroll", () => backBtn.style.display = window.scrollY > 300 ? 'block' : 'none');
+
+  // Add report dynamically
+  window.addReport = function(report) {
+    reports.unshift(report);
+    renderReports();
+  };
+
+  // Initial load
+  loadReports();
+});
+</script>
+
+</body>
+</html>

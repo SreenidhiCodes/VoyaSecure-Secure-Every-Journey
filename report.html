@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Report an Issue | VoyaSecure</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/report.css" />
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+
+<div class="report-wrapper">
+
+  <!-- MAP PANEL -->
+  <div class="map-panel">
+    <h2>Select Location</h2>
+    <input type="text" id="mapSearch" placeholder="Search location (e.g., Baga Beach, Chilika Lake)" style="padding:8px 12px; width:100%; margin-bottom:8px; border-radius:8px; border:1px solid #d4b79d;">
+    <div id="india-map" style="flex:1; width:100%; height:300px;"></div>
+    <p class="map-hint">Click on the map to auto-fill coordinates</p>
+  </div>
+
+  <!-- FORM -->
+  <form id="reportForm" class="glass-card">
+    <h2>Report an Issue</h2>
+
+    <label>Place</label>
+    <input type="text" id="place" required />
+
+    <label>State</label>
+    <input type="text" id="state" required />
+
+    <label>Country</label>
+    <input type="text" id="country" value="India" readonly />
+
+    <label>Coordinates</label>
+    <input type="text" id="coordinates" readonly required />
+    <input type="hidden" id="lat" />
+    <input type="hidden" id="lng" />
+
+    <label>Type of Problem</label>
+    <select id="problemType" required>
+      <option value="">Select</option>
+      <option value="Scam / Fraud">Scam / Fraud</option>
+      <option value="Money Laundering">Money Laundering</option>
+      <option value="Theft">Theft</option>
+      <option value="Harassment">Harassment</option>
+      <option value="Safety Risk">Safety Risk</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <input type="text" id="otherProblem" placeholder="Specify the problem" style="display:none;" />
+
+    <label>Severity</label>
+    <input type="text" id="severity" readonly required />
+
+    <label>Describe the Issue</label>
+    <textarea id="description" required></textarea>
+
+    <label>Date of Incident</label>
+    <input type="date" id="incidentDate" required />
+
+    <button type="submit">Submit Report</button>
+  </form>
+
+</div>
+
+<!-- MAP + FORM LOGIC -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  // Severity mapping
+  const severityMap = {
+    "Scam / Fraud": "High",
+    "Money Laundering": "High",
+    "Theft": "Medium",
+    "Harassment": "Medium",
+    "Safety Risk": "High",
+    "Other": "Low"
+  };
+
+  // Initialize map
+  const map = L.map("india-map", { center: [22.5, 82.5], zoom: 5 });
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution: "© OpenStreetMap"
+  }).addTo(map);
+
+  setTimeout(() => map.invalidateSize(), 300);
+
+  let marker = null;
+
+  // Map click fills coordinates and location
+  map.on("click", async (e) => {
+    const lat = e.latlng.lat.toFixed(6);
+    const lng = e.latlng.lng.toFixed(6);
+
+    if (marker) map.removeLayer(marker);
+    marker = L.circleMarker([lat, lng], { radius: 8, color: "#d4af37", fillOpacity: 0.9 }).addTo(map);
+    map.flyTo([lat, lng], 12);
+
+    document.getElementById("lat").value = lat;
+    document.getElementById("lng").value = lng;
+    document.getElementById("coordinates").value = `${lat}, ${lng}`;
+
+    try {
+      const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`);
+      const data = await res.json();
+
+      document.getElementById("place").value = data.address.city || data.address.town || data.address.village || "Selected Location";
+      document.getElementById("state").value = data.address.state || "";
+
+    } catch {
+      document.getElementById("place").value = "Selected Location";
+      document.getElementById("state").value = "";
+    }
+  });
+
+  // Severity logic
+  const problemSelect = document.getElementById("problemType");
+  const severityInput = document.getElementById("severity");
+  const otherInput = document.getElementById("otherProblem");
+
+  problemSelect.addEventListener("change", () => {
+    const value = problemSelect.value;
+    severityInput.value = severityMap[value] || "Low";
+    otherInput.style.display = value === "Other" ? "block" : "none";
+  });
+
+});
+const mapSearch = document.getElementById("mapSearch");
+
+mapSearch.addEventListener("keypress", async (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    const query = mapSearch.value.trim();
+    if (!query) return;
+
+    try {
+      const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=5`, {
+        headers: { "Accept": "application/json" }
+      });
+      if (!res.ok) throw new Error(`Nominatim error ${res.status}`);
+      const results = await res.json();
+
+      if (!results || results.length === 0) {
+        alert("❌ Location not found. Try a different query.");
+        return;
+      }
+
+      // Take first result
+      const loc = results[0];
+      const lat = parseFloat(loc.lat);
+      const lng = parseFloat(loc.lon);
+
+      // Remove old marker
+      if (marker) map.removeLayer(marker);
+
+      // Add new marker
+      marker = L.circleMarker([lat, lng], {
+        radius: 8,
+        color: "#d4af37",
+        fillOpacity: 0.9
+      }).addTo(map);
+
+      // Fly to location
+      map.flyTo([lat, lng], 12);
+
+      // Fill coordinates in form
+      document.getElementById("lat").value = lat.toFixed(6);
+      document.getElementById("lng").value = lng.toFixed(6);
+      document.getElementById("coordinates").value = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
+
+      // Reverse geocode safely
+      try {
+        const revRes = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`, {
+          headers: { "Accept": "application/json" }
+        });
+        const revData = await revRes.json();
+        document.getElementById("place").value =
+          revData.address?.city || revData.address?.town || revData.address?.village || loc.display_name || "Selected Location";
+        document.getElementById("state").value = revData.address?.state || "";
+      } catch(err){
+        document.getElementById("place").value = loc.display_name || "Selected Location";
+        document.getElementById("state").value = "";
+      }
+
+    } catch(err) {
+      console.error("Map search error:", err);
+      alert("❌ Could not find location. Try again.");
+    }
+  }
+});
+</script>
+<!-- FORM SUBMISSION -->
+<script src="/data/report.js"></script>
+
+</body>
+</html>

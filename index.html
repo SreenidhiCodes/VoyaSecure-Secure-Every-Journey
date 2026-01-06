@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VoyaSecure</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Leaflet (kept, used in report page) -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+  </script>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav><a href="aboutus.html">About Us</a></nav>
+<nav><a href="communities.html">Communities</a></nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+
+  <video class="hero-video" id="heroVideo" autoplay muted loop playsinline>
+    <source src="hero.mp4" type="video/mp4">
+  </video>
+
+  <div class="overlay"></div>
+
+  <div class="content">
+    <h1>VOYASECURE</h1>
+    <h2>Secure Every Journey</h2>
+
+    <p>
+      Discover safe destinations.<br>
+      Learn from real traveler experiences.<br>
+      Stay alert, informed, and protected.
+    </p>
+
+  <div class="cta-container">
+  <a href="/reported.html" class="reported-btn">
+    View Reported Cases
+  </a>
+</div>
+
+
+    <div class="actions">
+      <div class="action" id="locationsBtn">Locations</div>
+      <div class="action">
+        <a href="report.html" style="text-decoration:none; color:inherit;">
+          Report Scam
+        </a>
+      </div>
+      <div class="action">
+        <a href="communities.html" style="text-decoration:none; color:inherit;">
+          Communities
+        </a>
+      </div>
+      <div class="action">
+        <a href="aboutus.html" style="text-decoration:none; color:inherit;">
+          About Us
+        </a>
+      </div>
+    </div>
+
+    <button id="soundToggle" class="sound-btn">Enable Sound</button>
+  </div>
+</section>
+
+<!-- LOCATIONS SECTION (ONLY LOCATIONS, NO MAP) -->
+<section id="locations-section">
+  <h2 class="locations-title">Explore Locations</h2>
+  <div id="locationsGrid" class="locations-grid"></div>
+</section>
+
+<!-- MAIN SCRIPT -->
+<script>
+  const video = document.getElementById("heroVideo");
+  const btn = document.getElementById("soundToggle");
+  const locationsBtn = document.getElementById("locationsBtn");
+  const hero = document.getElementById("hero");
+  const locations = document.getElementById("locations-section");
+
+  btn.addEventListener("click", () => {
+    video.muted = !video.muted;
+    btn.textContent = video.muted ? "Enable Sound" : "Sound On";
+  });
+
+  locationsBtn.addEventListener("click", () => {
+  hero.classList.add("exit");
+  locations.classList.add("active");
+});
+</script>
+
+<!-- LOCATIONS DATA -->
+<script src="data/locations.js"></script>
+
+</body>
+</html>
+
+

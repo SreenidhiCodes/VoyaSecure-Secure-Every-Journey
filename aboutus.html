@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Voya Secure - Your Travel Guardian</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            color: #333;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #ff9966 0%, #ff5e62 100%);
+            padding: 2rem;
+            text-align: center;
+            color: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            margin: 0;
+        }
+
+        /* Journey Section */
+        .journey-section {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fff5e6 0%, #ffe4cc 100%);
+            padding: 8rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .journey-section::before {
+            content: '✈️';
+            position: absolute;
+            font-size: 20rem;
+            opacity: 0.05;
+            left: -5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: drift 15s ease-in-out infinite;
+        }
+
+        @keyframes drift {
+            0%, 100% { transform: translateY(-50%) translateX(0); }
+            50% { transform: translateY(-50%) translateX(100px); }
+        }
+
+        .content-wrapper {
+            max-width: 1000px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .content-wrapper h2 {
+            font-size: 3.5rem;
+            color: #ff6b6b;
+            margin-bottom: 2rem;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .content-wrapper p {
+            font-size: 1.4rem;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 1.5rem;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Danger Section */
+        .danger-section {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fab1a0 0%, #ff7675 100%);
+            padding: 8rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .danger-section::before {
+            content: '⚠️';
+            position: absolute;
+            font-size: 25rem;
+            opacity: 0.1;
+            right: -5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: translateY(-50%) rotate(0deg); }
+            to { transform: translateY(-50%) rotate(360deg); }
+        }
+
+        .danger-section .content-wrapper {
+            color: white;
+        }
+
+        .danger-section h2 {
+            color: white !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .danger-section p {
+            color: white !important;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        /* Rescue Section */
+        .rescue-section {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            padding: 8rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .rescue-section::before {
+            content: '🛡️';
+            position: absolute;
+            font-size: 20rem;
+            opacity: 0.08;
+            right: 5%;
+            top: 10%;
+            animation: bounce 3s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-30px); }
+        }
+
+        .icon-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .icon-box {
+            text-align: center;
+            padding: 2.5rem;
+            background: rgba(255,255,255,0.6);
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            animation: bounceIn 0.8s ease-out;
+            backdrop-filter: blur(10px);
+        }
+
+        .icon-box:hover {
+            transform: translateY(-15px) scale(1.05);
+            background: rgba(255,255,255,0.9);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .icon-symbol {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: swing 2s ease-in-out infinite;
+        }
+
+        @keyframes swing {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(10deg); }
+            75% { transform: rotate(-10deg); }
+        }
+
+        .icon-box h3 {
+            color: #d63031;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .icon-box p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        /* Confidence Section */
+        .confidence-section {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #55efc4 0%, #00b894 100%);
+            padding: 8rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .confidence-section .content-wrapper {
+            color: white;
+            text-align: center;
+        }
+
+        .confidence-section h2 {
+            color: white !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 4rem;
+        }
+
+        .confidence-section p {
+            color: white !important;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: all 0.4s ease;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .feature-card:hover {
+            background: rgba(255,255,255,0.35);
+            transform: translateY(-10px);
+            border-color: rgba(255,255,255,0.6);
+        }
+
+        .feature-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            font-size: 1.2rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            min-height: 80vh;
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, #ff9966 0%, #ff5e62 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .cta-section::before {
+            content: '🌍';
+            position: absolute;
+            font-size: 30rem;
+            opacity: 0.05;
+            animation: rotateGlobe 30s linear infinite;
+        }
+
+        @keyframes rotateGlobe {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .cta-section h2 {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            z-index: 2;
+        }
+
+        .cta-section p {
+            font-size: 1.6rem;
+            max-width: 900px;
+            margin-bottom: 3rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            z-index: 2;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.8rem 4rem;
+            background: white;
+            color: #ff5e62;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            z-index: 2;
+            animation: bounceIn 1.5s ease-out;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .content-wrapper h2 { font-size: 2.5rem; }
+            .content-wrapper p { font-size: 1.2rem; }
+            .confidence-section h2 { font-size: 2.8rem; }
+            .cta-section h2 { font-size: 2.5rem; }
+            .cta-section p { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="hero">
+        <h1>🌍 Voya Secure</h1>
+    </header>
+    <!-- Journey Begins -->
+    <section class="journey-section">
+        <div class="content-wrapper">
+            <h2>✈️ The Journey Begins</h2>
+            <p>Picture this: Sarah and her family are bubbling with excitement. Maps spread across the dining table, guidebooks marked with colorful sticky notes, and dreams of wandering through ancient streets, tasting exotic cuisines, and creating memories that will last a lifetime.</p>
+            <p>Like millions of travelers every year, they've planned every detail—the perfect hotel with a view, the must-see landmarks, the hidden gem restaurants recommended by friends. The countdown begins, bags are packed, and anticipation fills the air.</p>
+            <p>This is the magic of travel—the promise of adventure, discovery, and joy. Every destination holds the possibility of transformation, of stories waiting to be lived, of moments that will define their journey together.</p>
+        </div>
+    </section>
+
+    <!-- Hidden Dangers -->
+    <section class="danger-section">
+        <div class="content-wrapper">
+            <h2>⚠️ The Hidden Shadows</h2>
+            <p>But in their sweet spot of dreams, there lurk dangers they never imagined. The taxi driver quoting five times the normal fare. The "helpful" stranger leading them to a fake ticket office. The restaurant menu with tourist prices that locals never see. The sophisticated scam at the ATM that empties their account in seconds.</p>
+            <p>Every year, countless travelers return home with stories not just of wonder, but of being taken advantage of, scammed, or worse—feeling unsafe in places they had dreamed of visiting. The excitement transforms into anxiety, the freedom into vigilance, and the joy into caution.</p>
+            <p>The journey that promised liberation becomes shadowed by uncertainty. And the question echoes: does discovering the world have to come at such a cost?</p>
+        </div>
+    </section>
+
+    <!-- Voya Secure to the Rescue -->
+    <section class="rescue-section">
+        <div class="content-wrapper">
+            <h2>🛡️ Enter Voya Secure</h2>
+            <p>This is where our story changes. Imagine Sarah opening her phone and seeing a real-time alert: "Scam reported at XYZ taxi stand—use official queue 100m ahead." Or reading yesterday's report from another traveler about the exact restaurant scam she was about to walk into.</p>
+            <p>Voya Secure is more than an app—it's a community of travelers protecting each other. When one person reports a scam, thousands are warned. When someone discovers a danger, everyone benefits. We've created a global safety net woven from the experiences of real travelers, updated in real-time, spanning every corner of the world.</p>
+            
+            <div class="icon-container">
+                <div class="icon-box">
+                    <div class="icon-symbol">🚨</div>
+                    <h3>Real-Time Alerts</h3>
+                    <p>Instant notifications about scams and dangers in your exact location, the moment they're reported</p>
+                </div>
+                <div class="icon-box">
+                    <div class="icon-symbol">👥</div>
+                    <h3>Community Reports</h3>
+                    <p>Real travelers sharing real experiences to keep you safe—no corporate filters, just honest protection</p>
+                </div>
+                <div class="icon-box">
+                    <div class="icon-symbol">📍</div>
+                    <h3>Location-Based Intelligence</h3>
+                    <p>Relevant warnings for exactly where you are, delivered when you need them most</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel with Confidence -->
+    <section class="confidence-section">
+        <div class="content-wrapper">
+            <h2>🌟 Travel with Confidence</h2>
+            <p>With Voya Secure, Sarah's family explores freely, knowing they're protected by a community that cares. They discover the real magic of their destination—not marred by anxiety, but enhanced by confidence. Every street becomes an adventure, every interaction a possibility, and every moment a memory worth keeping.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>📱 Report Issues</h3>
+                    <p>Encountered a scam? Report it in seconds and help fellow travelers avoid the same trap</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🗺️ Safe Zones</h3>
+                    <p>Discover verified safe areas, trusted services, and local gems in any destination worldwide</p>
+                </div>
+                <div class="feature-card">
+                    <h3>💬 Community Chat</h3>
+                    <p>Connect with fellow travelers and get real-time advice from those who know the ground truth</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🔔 Smart Notifications</h3>
+                    <p>Get alerted about potential issues before you encounter them—prevention is protection</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>Your Memorable Holiday Awaits</h2>
+        <p>Join thousands of travelers who explore the world with confidence. Because every journey deserves to be remembered for all the right reasons—the laughter, the wonder, the connections, and the freedom to discover without fear.</p>
+        <a href="#" class="cta-button">Start Your Safe Journey Today</a>
+    </section>
+</body>
+</html>

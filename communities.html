@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Voya Secure – Community</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+*{box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+body{margin:0;background:#f3fbf6}
+header{height:90px;background:linear-gradient(90deg,#7bdcb5,#b6f2d8);display:flex;align-items:center;justify-content:space-between;padding:0 40px;color:#134e4a}
+header .left{font-size:36px;font-weight:800;color:#065f46}
+header .right{font-size:30px;font-weight:700;color:#065f46}
+.container{display:flex;height:calc(100vh - 90px)}
+.sidebar{width:32%;min-width:300px;background:#e6f7ef;padding:25px;overflow-y:auto;position:relative}
+.search{width:100%;padding:14px 18px;border-radius:30px;border:2px solid #6ee7b7;font-size:16px;margin-bottom:10px;background:#ffffff}
+#suggestions{position:absolute;top:60px;left:25px;right:25px;background:#ffffff;border-radius:18px;box-shadow:0 8px 20px rgba(6,95,70,0.15);display:none;z-index:10;max-height:200px;overflow-y:auto}
+.suggestion-item{padding:10px 15px;cursor:pointer;border-bottom:1px solid #d1fae5}
+.suggestion-item:hover{background:#d1fae5}
+.section-title{font-weight:800;color:#065f46;margin:18px 0 12px}
+.community{background:#ffffff;border-radius:18px;padding:14px 18px;margin-bottom:10px;cursor:pointer;transition:.2s;border:1px solid #d1fae5}
+.community:hover{background:#d1fae5}
+.community.active{background:#6ee7b7;color:#064e3b;font-weight:700}
+.chat-area{flex:1;padding:30px;background:#f0fdf9;display:flex;flex-direction:column}
+.messages{flex:1;border:2px solid #6ee7b7;border-radius:26px;padding:24px;background:#ffffff;overflow-y:auto}
+.msg{background:#ecfdf5;border-radius:18px;padding:14px 18px;margin-bottom:12px;max-width:70%;color:#064e3b}
+.you{background:#a7f3d0;margin-left:auto}
+.input-area{display:flex;margin-top:20px}
+.input-area input{flex:1;padding:16px 20px;border-radius:30px;border:2px solid #6ee7b7;font-size:16px}
+.input-area button{margin-left:16px;padding:16px 34px;border-radius:30px;border:none;background:linear-gradient(90deg,#6ee7b7,#34d399);color:#064e3b;font-size:18px;font-weight:700;cursor:pointer}
+</style>
+</head>
+<body>
+<header>
+  <div class="left">Communities</div>
+  <div class="right" id="chatTitle">Voya Secure</div>
+</header>
+
+<div class="container">
+  <aside class="sidebar">
+    <input class="search" id="searchInput" placeholder="🔍 Search tourist place">
+    <div id="suggestions"></div>
+
+    <div class="section-title">Voya Secure</div>
+    <div id="voyaCommunity" class="community active">🛡️ Main Chat</div>
+
+    <div class="section-title">My Communities</div>
+    <div id="myCommunities"></div>
+
+    <div class="section-title">All Communities</div>
+    <div id="allCommunities"></div>
+  </aside>
+
+  <main class="chat-area">
+    <div class="messages" id="messages">
+      <p style="color:#065f46;font-weight:700;">Start chatting in Voya Secure.</p>
+    </div>
+    <div class="input-area">
+      <input id="msgInput" placeholder="Type a message…">
+      <button onclick="sendMsg()">Send</button>
+    </div>
+  </main>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+// Full 50 tourist locations
+const locations = [
+{id:1,name:"Baga Beach"}, {id:2,name:"Charminar"}, {id:3,name:"Connaught Place"},
+{id:4,name:"Tirupati"}, {id:5,name:"Munnar"}, {id:6,name:"Alleppey"}, {id:7,name:"Kumarakom"},
+{id:8,name:"Ooty"}, {id:9,name:"Coorg"}, {id:10,name:"Kodaikanal"}, {id:11,name:"Araku Valley"},
+{id:12,name:"Borra Caves"}, {id:13,name:"Varkala"}, {id:14,name:"Madurai"}, {id:15,name:"Rameswaram"},
+{id:16,name:"Ramappa Temple"}, {id:17,name:"Hampi"}, {id:18,name:"Mysore Palace"}, {id:19,name:"Gokarna"},
+{id:20,name:"Chikmagalur"}, {id:21,name:"Red Fort"}, {id:22,name:"Qutub Minar"}, {id:23,name:"Agra Fort"},
+{id:24,name:"Panch Mahal"}, {id:25,name:"Mathura"}, {id:26,name:"Vrindavan"}, {id:27,name:"Haridwar"},
+{id:28,name:"Mussoorie"}, {id:29,name:"Jim Corbett National Park"}, {id:30,name:"Dal Lake"}, {id:31,name:"Gulmarg"},
+{id:32,name:"Amarnath Cave"}, {id:33,name:"Chandigarh Rock Garden"}, {id:34,name:"Ranthambore Fort"}, {id:35,name:"Jaisalmer Fort"},
+{id:36,name:"Pushkar Lake"}, {id:37,name:"Victoria Memorial"}, {id:38,name:"Konark Sun Temple"}, {id:39,name:"Jagannath Temple"},
+{id:40,name:"Bodh Gaya"}, {id:41,name:"Gateway of India"}, {id:42,name:"Sabarmati Ashram"}, {id:43,name:"Amber Fort"},
+{id:44,name:"Pachmarhi Caves"}, {id:45,name:"Dumas Beach"}, {id:46,name:"Hawa Mahal"}, {id:47,name:"Marine Drive"},
+{id:48,name:"Nalanda Ruins"}, {id:49,name:"Puri Beach"}, {id:50,name:"Rock Garden Ranchi"}
+];
+
+// In-memory messages for all communities
+let messagesStore = {"voya":[]};
+locations.forEach(loc=>messagesStore[loc.id]=[]);
+
+let current = "voya";
+
+// Generate 5 random My Communities
+function getRandomMyCommunities(){
+  const shuffled = [...locations].sort(()=>0.5-Math.random());
+  return shuffled.slice(0,5);
+}
+
+// Load sidebar
+function loadSidebar(){
+  // My Communities
+  const myCommDiv = document.getElementById("myCommunities");
+  myCommDiv.innerHTML="";
+  getRandomMyCommunities().forEach(loc=>{
+    const d=document.createElement("div");
+    d.className="community";
+    d.innerText=loc.name;
+    d.onclick = ()=>openCommunity(loc.id);
+    myCommDiv.appendChild(d);
+  });
+
+  // All Communities (IDs 1-15)
+  const allCommDiv = document.getElementById("allCommunities");
+  allCommDiv.innerHTML="";
+  locations.filter(l=>l.id>=1 && l.id<=15).forEach(loc=>{
+    const d=document.createElement("div");
+    d.className="community";
+    d.innerText=loc.name;
+    d.onclick = ()=>openCommunity(loc.id);
+    allCommDiv.appendChild(d);
+  });
+}
+
+// Open community
+function openCommunity(id){
+  current=id;
+  document.getElementById("chatTitle").innerText = id==="voya"?"Voya Secure":locations.find(l=>l.id===id).name;
+  document.querySelectorAll(".community").forEach(c=>c.classList.remove("active"));
+  if(id==="voya") document.getElementById("voyaCommunity").classList.add("active");
+  Array.from(document.querySelectorAll(".community")).forEach(c=>{
+    if(c.innerText===locations.find(l=>l.id===id)?.name)c.classList.add("active");
+  });
+  showMsgs();
+}
+
+// Show messages
+function showMsgs(){
+  const messagesDiv=document.getElementById("messages");
+  messagesDiv.innerHTML="";
+  const msgs=messagesStore[current];
+  if(msgs.length===0){
+    messagesDiv.innerHTML="<p style='color:#065f46;font-weight:700;'>Start chatting!</p>";
+  } else {
+    msgs.forEach(m=>{
+      const d=document.createElement("div");
+      d.className="msg you";
+      d.innerText=m;
+      messagesDiv.appendChild(d);
+    });
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  }
+}
+
+// Send message
+window.sendMsg=function(){
+  const input=document.getElementById("msgInput");
+  if(!input.value.trim()) return;
+  messagesStore[current].push(input.value);
+  showMsgs();
+  input.value="";
+}
+
+// Search suggestions
+const searchInput = document.getElementById("searchInput");
+const suggestionsDiv = document.getElementById("suggestions");
+
+searchInput.addEventListener("input", function(){
+  const q=this.value.toLowerCase();
+  if(!q){ suggestionsDiv.style.display="none"; return; }
+  const filtered=locations.filter(l=>l.name.toLowerCase().includes(q));
+  suggestionsDiv.innerHTML="";
+  filtered.forEach(loc=>{
+    const item=document.createElement("div");
+    item.className="suggestion-item";
+    item.innerText=loc.name;
+    item.onclick=()=>{
+      openCommunity(loc.id);
+      suggestionsDiv.style.display="none";
+      searchInput.value="";
+    };
+    suggestionsDiv.appendChild(item);
+  });
+  suggestionsDiv.style.display = filtered.length?"block":"none";
+});
+
+// Hide suggestions when clicking outside
+document.addEventListener("click",(e)=>{
+  if(!searchInput.contains(e.target)) suggestionsDiv.style.display="none";
+});
+
+// Initialize
+loadSidebar();
+openCommunity("voya");
+
+});
+</script>
+</body>
+</html>
