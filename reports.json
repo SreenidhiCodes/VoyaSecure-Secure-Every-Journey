@@ -1,0 +1,47 @@
+[
+  {
+    "id": "fce8edfd-6db3-4c3b-9b7d-1745c977f0ff",
+    "place": "Chilika Lake",
+    "state": "Odisha",
+    "country": "India",
+    "coordinates": {
+      "lat": 19.767257,
+      "lng": 85.389921
+    },
+    "problemType": "scam/fraud",
+    "description": "Selling stones in the name of Valuable gems at a very  high price",
+    "incidentDate": "2025-11-15T00:00:00Z",
+    "severity": "High",
+    "reportedAt": "2026-01-04T08:18:07.319162Z"
+  },
+  {
+    "id": "c55bc90c-df4d-40a3-a5c4-aabc661762a6",
+    "place": "Charminar",
+    "state": "Telangana",
+    "country": "India",
+    "coordinates": {
+      "lat": "17.373740",
+      "lng": "78.388911"
+    },
+    "problemType": "Scam / Fraud",
+    "description": "Fake tour guides mislead tourists by charging money for unofficial and incomplete information",
+    "incidentDate": "2025-05-05",
+    "severity": "High",
+    "reportedAt": "2026-01-05T11:27:00.749197Z"
+  },
+  {
+    "id": "7896cb52-1515-4081-90df-19fc4acf39d8",
+    "place": "Tirupati",
+    "state": "Andhra Pradesh",
+    "country": "India",
+    "coordinates": {
+      "lat": "13.631471",
+      "lng": "79.426802"
+    },
+    "problemType": "Misleading Practices",
+    "description": "Agents falsely claiming faster Darshan access in exchange for unofficial payments.",
+    "incidentDate": "2025-12-05",
+    "severity": "Low",
+    "reportedAt": "2026-01-06T06:38:31.959270Z"
+  }
+]

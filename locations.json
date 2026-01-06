@@ -1,0 +1,1084 @@
+[
+  {
+    "id": 1,
+    "name": "Baga Beach",
+    "letter": "B",
+    "city": "Goa",
+    "state": "Goa",
+    "image": "images/baga.jpeg",
+    "riskLevel": "Medium",
+    "issuesReported": [
+      "Theft",
+      "Late-night safety"
+    ],
+    "sources": [
+      "Google Maps",
+      "Reddit",
+      "Local News"
+    ],
+    "lastVerified": "2025-01-10",
+    "coordinates": {
+      "lat": 15.5527,
+      "lng": 73.7517
+    }
+  },
+  {
+    "id": 2,
+    "name": "Charminar",
+    "letter": "C",
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "image": "images/charminar.jpeg",
+    "riskLevel": "Medium",
+    "issuesReported": [
+      "Crowds",
+      "Chain snatching"
+    ],
+    "sources": [
+      "Police Advisory",
+      "Google Reviews"
+    ],
+    "lastVerified": "2025-01-08",
+    "coordinates": {
+      "lat": 17.3616,
+      "lng": 78.4747
+    }
+  },
+  {
+    "id": 3,
+    "name": "Connaught Place",
+    "letter": "C",
+    "city": "New Delhi",
+    "state": "Delhi",
+    "image": "images/cp.jpeg",
+    "riskLevel": "Low",
+    "issuesReported": [
+      "Rare pickpocketing"
+    ],
+    "sources": [
+      "Google Maps",
+      "X reports"
+    ],
+    "lastVerified": "2025-01-12",
+    "coordinates": {
+      "lat": 28.6328,
+      "lng": 77.2197
+    }
+  },
+  {
+    "id": 4,
+    "name": "Tirupati",
+    "letter": "T",
+    "city": "Tirupati",
+    "state": "Andhra Pradesh",
+    "image": "images/tirupati.jpeg",
+    "riskLevel": "Medium",
+    "issuesReported": [
+      "Theft",
+      "Crowd",
+      "Overcharging"
+    ],
+    "sources": [
+      "Google Maps",
+      "Local News",
+      "Tourist Feedback"
+    ],
+    "lastVerified": "2025-01-08",
+    "coordinates": {
+      "lat": 13.6288,
+      "lng": 79.4192
+    }
+  },
+  {
+    "id": 5,
+    "name": "Munnar",
+    "letter": "M",
+    "city": "Munnar",
+    "state": "Kerala",
+    "image": "images/munnar.jpeg",
+    "riskLevel": "Low",
+    "issuesReported": [
+      "Fog",
+      "Road safety"
+    ],
+    "sources": [
+      "Google Reviews",
+      "Tourist Feedback"
+    ],
+    "lastVerified": "2024-12-15",
+    "coordinates": {
+      "lat": 10.0889,
+      "lng": 77.0595
+    }
+  },
+  {
+    "id": 6,
+    "name": "Alleppey",
+    "letter": "A",
+    "city": "Alappuzha",
+    "state": "Kerala",
+    "image": "images/alleppey.jpeg",
+    "riskLevel": "Medium",
+    "issuesReported": [
+      "Theft",
+      "Overpricing"
+    ],
+    "sources": [
+      "Google Maps",
+      "Reddit",
+      "Tourist Feedback"
+    ],
+    "lastVerified": "2025-01-05",
+    "coordinates": {
+      "lat": 9.4981,
+      "lng": 76.3388
+    }
+  },
+  {
+    "id": 7,
+    "name": "Kumarakom",
+    "letter": "K",
+    "city": "Kumarakom",
+    "state": "Kerala",
+    "image": "images/kumarakom.jpeg",
+    "riskLevel": "Low",
+    "issuesReported": [
+      "Overpricing"
+    ],
+    "sources": [
+      "Google Reviews",
+      "Tourist Feedback"
+    ],
+    "lastVerified": "2024-11-30",
+    "coordinates": {
+      "lat": 9.6175,
+      "lng": 76.4291
+    }
+  },
+  {
+    "id": 8,
+    "name": "Ooty",
+    "letter": "O",
+    "city": "Ooty",
+    "state": "Tamil Nadu",
+    "image": "images/ooty.jpeg",
+    "riskLevel": "Medium",
+    "issuesReported": [
+      "Crowd",
+      "Traffic"
+    ],
+    "sources": [
+      "Google Maps",
+      "Local News"
+    ],
+    "lastVerified": "2024-12-28",
+    "coordinates": {
+      "lat": 11.4064,
+      "lng": 76.6932
+    }
+  },
+  {
+    "id": 9,
+    "name": "Coorg",
+    "letter": "C",
+    "city": "Madikeri",
+    "state": "Karnataka",
+    "image": "images/coorg.jpeg",
+    "riskLevel": "Low",
+    "issuesReported": [
+      "Road safety"
+    ],
+    "sources": [
+      "Google Reviews",
+      "Tourist Feedback"
+    ],
+    "lastVerified": "2024-12-18",
+    "coordinates": {
+      "lat": 12.4244,
+      "lng": 75.7382
+    }
+  },
+  {
+    "id": 10,
+    "name": "Kodaikanal",
+    "letter": "K",
+    "city": "Kodaikanal",
+    "state": "Tamil Nadu",
+    "image": "images/kodaikanal.jpeg",
+    "riskLevel": "Low",
+    "issuesReported": [
+      "Fog",
+      "Cold weather"
+    ],
+    "sources": [
+      "Google Maps",
+      "Tourist Feedback"
+    ],
+    "lastVerified": "2024-12-10",
+    "coordinates": {
+      "lat": 10.2381,
+      "lng": 77.4892
+    }
+  },
+  {
+    "id": 11,
+    "name": "Araku Valley",
+    "letter": "A",
+    "city": "Araku",
+    "state": "Andhra Pradesh",
+    "image": "images/araku.jpeg",
+    "riskLevel": "Low",
+    "issuesReported": [
+      "Road safety"
+    ],
+    "sources": [
+      "Google Reviews",
+      "Tourist Feedback"
+    ],
+    "lastVerified": "2024-12-20",
+    "coordinates": {
+      "lat": 18.3273,
+      "lng": 82.8775
+    }
+  },
+  {
+    "id": 12,
+    "name": "Borra Caves",
+    "letter": "B",
+    "city": "Borra",
+    "state": "Andhra Pradesh",
+    "image": "images/borra.jpeg",
+    "riskLevel": "Medium",
+    "issuesReported": [
+      "Slippery paths",
+      "Crowd"
+    ],
+    "sources": [
+      "Google Maps",
+      "Local News"
+    ],
+    "lastVerified": "2024-11-18",
+    "coordinates": {
+      "lat": 18.287,
+      "lng": 83.037
+    }
+  },
+  {
+    "id": 13,
+    "name": "Varkala",
+    "letter": "V",
+    "city": "Varkala",
+    "state": "Kerala",
+    "image": "images/varkala.jpeg",
+    "riskLevel": "Medium",
+    "issuesReported": [
+      "Late-night safety",
+      "Theft"
+    ],
+    "sources": [
+      "Google Reviews",
+      "Reddit"
+    ],
+    "lastVerified": "2025-01-02",
+    "coordinates": {
+      "lat": 8.7379,
+      "lng": 76.7163
+    }
+  },
+  {
+    "id": 14,
+    "name": "Madurai",
+    "letter": "M",
+    "city": "Madurai",
+    "state": "Tamil Nadu",
+    "image": "images/madurai.jpeg",
+    "riskLevel": "Medium",
+    "issuesReported": [
+      "Crowd",
+      "Pickpocketing"
+    ],
+    "sources": [
+      "Google Maps",
+      "Local News"
+    ],
+    "lastVerified": "2025-01-04",
+    "coordinates": {
+      "lat": 9.9252,
+      "lng": 78.1198
+    }
+  },
+  {
+    "id": 15,
+    "name": "Rameswaram",
+    "letter": "R",
+    "city": "Rameswaram",
+    "state": "Tamil Nadu",
+    "image": "images/rameswaram.jpeg",
+    "riskLevel": "Low",
+    "issuesReported": [
+      "Crowd"
+    ],
+    "sources": [
+      "Google Reviews",
+      "Tourist Feedback"
+    ],
+    "lastVerified": "2024-11-25",
+    "coordinates": {
+      "lat": 9.2881,
+      "lng": 79.3129
+    }
+  },
+  {
+    "id": 16,
+    "name": "Ramappa Temple",
+    "letter": "R",
+    "city": "Palampet",
+    "state": "Telangana",
+    "image": "images/ramappa.jpeg",
+    "riskLevel": "Low",
+    "issuesReported": [
+      "Limited transport"
+    ],
+    "sources": [
+      "Google Maps",
+      "Tourist Feedback"
+    ],
+    "lastVerified": "2024-10-12",
+    "coordinates": {
+      "lat": 18.2593,
+      "lng": 79.9405
+    }
+  },
+  {
+    "id": 17,
+    "name": "Hampi",
+    "letter": "H",
+    "city": "Hampi",
+    "state": "Karnataka",
+    "image": "images/hampi.jpeg",
+    "riskLevel": "Medium",
+    "issuesReported": [
+      "Theft",
+      "Heat"
+    ],
+    "sources": [
+      "Google Reviews",
+      "Local News"
+    ],
+    "lastVerified": "2024-11-22",
+    "coordinates": {
+      "lat": 15.335,
+      "lng": 76.46
+    }
+  },
+  {
+    "id": 18,
+    "name": "Mysore Palace",
+    "letter": "M",
+    "city": "Mysuru",
+    "state": "Karnataka",
+    "image": "images/mysore.jpeg",
+    "riskLevel": "Medium",
+    "issuesReported": [
+      "Crowd",
+      "Overcharging"
+    ],
+    "sources": [
+      "Google Maps",
+      "Tourist Feedback"
+    ],
+    "lastVerified": "2025-01-06",
+    "coordinates": {
+      "lat": 12.3052,
+      "lng": 76.6552
+    }
+  },
+  {
+    "id": 19,
+    "name": "Gokarna",
+    "letter": "G",
+    "city": "Gokarna",
+    "state": "Karnataka",
+    "image": "images/gokarna.jpeg",
+    "riskLevel": "Low",
+    "issuesReported": [
+      "Late-night safety"
+    ],
+    "sources": [
+      "Google Reviews",
+      "Reddit"
+    ],
+    "lastVerified": "2024-12-08",
+    "coordinates": {
+      "lat": 14.5479,
+      "lng": 74.3188
+    }
+  },
+  {
+    "id": 20,
+    "name": "Chikmagalur",
+    "letter": "C",
+    "city": "Chikmagalur",
+    "state": "Karnataka",
+    "image": "images/chikmagalur.jpeg",
+    "riskLevel": "Low",
+    "issuesReported": [
+      "Road safety"
+    ],
+    "sources": [
+      "Google Reviews",
+      "Tourist Feedback"
+    ],
+    "lastVerified": "2024-12-12",
+    "coordinates": {
+      "lat": 13.3161,
+      "lng": 75.772
+    }
+  },
+  {
+    "id": 21,
+    "name": "Red Fort",
+    "letter": "R",
+    "city": "New Delhi",
+    "state": "Delhi",
+    "image": "images/red_fort.jpeg",
+    "riskLevel": "Medium",
+    "issuesReported": [
+      "Crowds",
+      "Pickpocketing"
+    ],
+    "sources": [
+      "ASI",
+      "Delhi Police"
+    ],
+    "lastVerified": "2025-12-31",
+    "coordinates": {
+      "lat": 28.6562,
+      "lng": 77.241
+    }
+  },
+  {
+    "id": 22,
+    "name": "Qutub Minar",
+    "letter": "Q",
+    "city": "New Delhi",
+    "state": "Delhi",
+    "image": "images/qutub_minar.jpeg",
+    "riskLevel": "Low",
+    "issuesReported": [
+      "Heavy rush"
+    ],
+    "sources": [
+      "ASI"
+    ],
+    "lastVerified": "2025-12-30",
+    "coordinates": {
+      "lat": 28.5244,
+      "lng": 77.1855
+    }
+  },
+  {
+    "id": 23,
+    "name": "Agra Fort",
+    "letter": "A",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "image": "images/agra_fort.jpeg",
+    "riskLevel": "Low",
+    "issuesReported": [
+      "Crowds"
+    ],
+    "sources": [
+      "UP Tourism"
+    ],
+    "lastVerified": "2025-12-29",
+    "coordinates": {
+      "lat": 27.1795,
+      "lng": 78.0211
+    }
+  },
+  {
+    "id": 24,
+    "name": "Panch Mahal",
+    "letter": "P",
+    "city": "Fatehpur Sikri",
+    "state": "Uttar Pradesh",
+    "image": "images/panch_mahal.jpeg",
+    "riskLevel": "Medium",
+    "issuesReported": [
+      "Tourist scams"
+    ],
+    "sources": [
+      "Travel Reviews"
+    ],
+    "lastVerified": "2025-12-28",
+    "coordinates": {
+      "lat": 27.0937,
+      "lng": 77.661
+    }
+  },
+  {
+    "id": 25,
+    "name": "Mathura",
+    "letter": "M",
+    "city": "Mathura",
+    "state": "Uttar Pradesh",
+    "image": "images/mathura.jpeg",
+    "riskLevel": "Medium",
+    "issuesReported": [
+      "Festival crowds"
+    ],
+    "sources": [
+      "UP Tourism"
+    ],
+    "lastVerified": "2025-12-31",
+    "coordinates": {
+      "lat": 27.4924,
+      "lng": 77.6737
+    }
+  },
+  {
+    "id": 26,
+    "name": "Vrindavan",
+    "letter": "V",
+    "city": "Vrindavan",
+    "state": "Uttar Pradesh",
+    "image": "images/vrindavan.jpeg",
+    "riskLevel": "Medium",
+    "issuesReported": [
+      "Crowds",
+      "Traffic"
+    ],
+    "sources": [
+      "Local Authorities"
+    ],
+    "lastVerified": "2025-12-30",
+    "coordinates": {
+      "lat": 27.565,
+      "lng": 77.6593
+    }
+  },
+  {
+    "id": 27,
+    "name": "Haridwar",
+    "letter": "H",
+    "city": "Haridwar",
+    "state": "Uttarakhand",
+    "image": "images/haridwar.jpeg",
+    "riskLevel": "Medium",
+    "issuesReported": [
+      "River accidents",
+      "Crowds"
+    ],
+    "sources": [
+      "Uttarakhand Tourism"
+    ],
+    "lastVerified": "2025-12-29",
+    "coordinates": {
+      "lat": 29.9457,
+      "lng": 78.1642
+    }
+  },
+  {
+    "id": 28,
+    "name": "Mussoorie",
+    "letter": "M",
+    "city": "Mussoorie",
+    "state": "Uttarakhand",
+    "image": "images/mussoorie.jpeg",
+    "riskLevel": "Low",
+    "issuesReported": [
+      "Traffic congestion"
+    ],
+    "sources": [
+      "Tourism Board"
+    ],
+    "lastVerified": "2025-12-31",
+    "coordinates": {
+      "lat": 30.4598,
+      "lng": 78.066
+    }
+  },
+  {
+    "id": 29,
+    "name": "Jim Corbett National Park",
+    "letter": "J",
+    "city": "Ramnagar",
+    "state": "Uttarakhand",
+    "image": "images/jim_corbett.jpeg",
+    "riskLevel": "High",
+    "issuesReported": [
+      "Wildlife risk"
+    ],
+    "sources": [
+      "Forest Dept"
+    ],
+    "lastVerified": "2025-12-28",
+    "coordinates": {
+      "lat": 29.53,
+      "lng": 78.7747
+    }
+  },
+  {
+    "id": 30,
+    "name": "Dal Lake",
+    "letter": "D",
+    "city": "Srinagar",
+    "state": "Jammu & Kashmir",
+    "image": "images/dal_lake.jpeg",
+    "riskLevel": "Low",
+    "issuesReported": [
+      "Weather changes"
+    ],
+    "sources": [
+      "J&K Tourism"
+    ],
+    "lastVerified": "2025-12-31",
+    "coordinates": {
+      "lat": 34.0837,
+      "lng": 74.7973
+    }
+  },
+  {
+    "id": 31,
+    "name": "Gulmarg",
+    "letter": "G",
+    "city": "Gulmarg",
+    "state": "Jammu & Kashmir",
+    "image": "images/gulmarg.jpeg",
+    "riskLevel": "Medium",
+    "issuesReported": [
+      "Snow hazards"
+    ],
+    "sources": [
+      "Tourism Dept"
+    ],
+    "lastVerified": "2025-12-29",
+    "coordinates": {
+      "lat": 34.0484,
+      "lng": 74.3805
+    }
+  },
+  {
+    "id": 32,
+    "name": "Amarnath Cave",
+    "letter": "A",
+    "city": "Pahalgam",
+    "state": "Jammu & Kashmir",
+    "image": "images/amarnath.jpeg",
+    "riskLevel": "High",
+    "issuesReported": [
+      "Altitude sickness",
+      "Weather"
+    ],
+    "sources": [
+      "Shri Amarnath Shrine Board"
+    ],
+    "lastVerified": "2025-12-28",
+    "coordinates": {
+      "lat": 34.2156,
+      "lng": 75.5041
+    }
+  },
+  {
+    "id": 33,
+    "name": "Chandigarh Rock Garden",
+    "letter": "C",
+    "city": "Chandigarh",
+    "state": "Chandigarh",
+    "image": "images/rock_garden_chd.jpeg",
+    "riskLevel": "Low",
+    "issuesReported": [
+      "None major"
+    ],
+    "sources": [
+      "Chandigarh Tourism"
+    ],
+    "lastVerified": "2025-12-31",
+    "coordinates": {
+      "lat": 30.7525,
+      "lng": 76.8057
+    }
+  },
+  {
+    "id": 34,
+    "name": "Ranthambore Fort",
+    "letter": "R",
+    "city": "Sawai Madhopur",
+    "state": "Rajasthan",
+    "image": "images/ranthambore_fort.jpeg",
+    "riskLevel": "Medium",
+    "issuesReported": [
+      "Wildlife movement"
+    ],
+    "sources": [
+      "Rajasthan Tourism"
+    ],
+    "lastVerified": "2025-12-29",
+    "coordinates": {
+      "lat": 26.0173,
+      "lng": 76.5026
+    }
+  },
+  {
+    "id": 35,
+    "name": "Jaisalmer Fort",
+    "letter": "J",
+    "city": "Jaisalmer",
+    "state": "Rajasthan",
+    "image": "images/jaisalmer_fort.jpeg",
+    "riskLevel": "Low",
+    "issuesReported": [
+      "Heat conditions"
+    ],
+    "sources": [
+      "ASI"
+    ],
+    "lastVerified": "2025-12-30",
+    "coordinates": {
+      "lat": 26.9124,
+      "lng": 70.912
+    }
+  },
+  {
+    "id": 36,
+    "name": "Pushkar Lake",
+    "letter": "P",
+    "city": "Pushkar",
+    "state": "Rajasthan",
+    "image": "images/pushkar_lake.jpeg",
+    "riskLevel": "Low",
+    "issuesReported": [
+      "Festival crowds"
+    ],
+    "sources": [
+      "Rajasthan Tourism"
+    ],
+    "lastVerified": "2025-12-31",
+    "coordinates": {
+      "lat": 26.4899,
+      "lng": 74.5511
+    }
+  },
+  {
+    "id": 37,
+    "name": "Victoria Memorial",
+    "letter": "V",
+    "city": "Kolkata",
+    "state": "West Bengal",
+    "image": "images/victoria_memorial.jpeg",
+    "riskLevel": "Medium",
+    "issuesReported": [
+      "Pickpocketing",
+      "Scams"
+    ],
+    "sources": [
+      "TravelSafe",
+      "TripAdvisor"
+    ],
+    "lastVerified": "2025-12-30",
+    "coordinates": {
+      "lat": 22.5431,
+      "lng": 88.3428
+    }
+  },
+  {
+    "id": 38,
+    "name": "Konark Sun Temple",
+    "letter": "K",
+    "city": "Konark",
+    "state": "Odisha",
+    "image": "images/konark_sun.jpeg",
+    "riskLevel": "Medium",
+    "issuesReported": [
+      "Security lapses",
+      "Theft"
+    ],
+    "sources": [
+      "Kanak News",
+      "YouTube"
+    ],
+    "lastVerified": "2025-12-28",
+    "coordinates": {
+      "lat": 19.8859,
+      "lng": 86.0955
+    }
+  },
+  {
+    "id": 39,
+    "name": "Jagannath Temple",
+    "letter": "J",
+    "city": "Ranchi",
+    "state": "Jharkhand",
+    "image": "images/jagannath_temple.jpeg",
+    "riskLevel": "Low",
+    "issuesReported": [
+      "Crowds"
+    ],
+    "sources": [
+      "ClearTrip",
+      "Local Guides"
+    ],
+    "lastVerified": "2025-12-29",
+    "coordinates": {
+      "lat": 23.3441,
+      "lng": 85.3096
+    }
+  },
+  {
+    "id": 40,
+    "name": "Bodh Gaya",
+    "letter": "B",
+    "city": "Bodh Gaya",
+    "state": "Bihar",
+    "image": "images/bodh_gaya.jpeg",
+    "riskLevel": "Low",
+    "issuesReported": [
+      "Rare pickpocketing"
+    ],
+    "sources": [
+      "Holidify",
+      "Tourist Reviews"
+    ],
+    "lastVerified": "2025-12-31",
+    "coordinates": {
+      "lat": 24.6978,
+      "lng": 85.0449
+    }
+  },
+  {
+    "id": 41,
+    "name": "Gateway of India",
+    "letter": "G",
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "image": "images/gateway_india.jpeg",
+    "riskLevel": "Medium",
+    "issuesReported": [
+      "Crowds",
+      "Pickpocketing"
+    ],
+    "sources": [
+      "US Embassy",
+      "Local News"
+    ],
+    "lastVerified": "2025-12-30",
+    "coordinates": {
+      "lat": 18.9219,
+      "lng": 72.8344
+    }
+  },
+  {
+    "id": 42,
+    "name": "Sabarmati Ashram",
+    "letter": "S",
+    "city": "Ahmedabad",
+    "state": "Gujarat",
+    "image": "images/sabarmati_ashram.jpeg",
+    "riskLevel": "Low",
+    "issuesReported": [
+      "None major"
+    ],
+    "sources": [
+      "Economic Times",
+      "Numbeo"
+    ],
+    "lastVerified": "2025-12-29",
+    "coordinates": {
+      "lat": 23.0616,
+      "lng": 72.5974
+    }
+  },
+  {
+    "id": 43,
+    "name": "Amber Fort",
+    "letter": "A",
+    "city": "Jaipur",
+    "state": "Rajasthan",
+    "image": "images/amber_fort.jpeg",
+    "riskLevel": "Low",
+    "issuesReported": [
+      "Crowds"
+    ],
+    "sources": [
+      "Times of India",
+      "Safety Index"
+    ],
+    "lastVerified": "2025-12-31",
+    "coordinates": {
+      "lat": 26.9859,
+      "lng": 75.8513
+    }
+  },
+  {
+    "id": 44,
+    "name": "Pachmarhi Caves",
+    "letter": "P",
+    "city": "Pachmarhi",
+    "state": "Madhya Pradesh",
+    "image": "images/pachmarhi.jpeg",
+    "riskLevel": "Medium",
+    "issuesReported": [
+      "Wildlife",
+      "Terrain"
+    ],
+    "sources": [
+      "Trawell",
+      "Tourist Sites"
+    ],
+    "lastVerified": "2025-12-28",
+    "coordinates": {
+      "lat": 22.4687,
+      "lng": 78.4273
+    }
+  },
+  {
+    "id": 45,
+    "name": "Dumas Beach",
+    "letter": "D",
+    "city": "Surat",
+    "state": "Gujarat",
+    "image": "images/dumas_beach.jpeg",
+    "riskLevel": "Low",
+    "issuesReported": [
+      "Rare incidents"
+    ],
+    "sources": [
+      "Economic Times",
+      "Numbeo"
+    ],
+    "lastVerified": "2025-12-30",
+    "coordinates": {
+      "lat": 21.1333,
+      "lng": 72.6833
+    }
+  },
+  {
+    "id": 46,
+    "name": "Hawa Mahal",
+    "letter": "H",
+    "city": "Jaipur",
+    "state": "Rajasthan",
+    "image": "images/hawa_mahal.jpeg",
+    "riskLevel": "Low",
+    "issuesReported": [
+      "Pickpocketing"
+    ],
+    "sources": [
+      "Times of India",
+      "Safety Reports"
+    ],
+    "lastVerified": "2025-12-29",
+    "coordinates": {
+      "lat": 26.9239,
+      "lng": 75.8277
+    }
+  },
+  {
+    "id": 47,
+    "name": "Marine Drive",
+    "letter": "M",
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "image": "images/marine_drive.jpeg",
+    "riskLevel": "Medium",
+    "issuesReported": [
+      "Traffic",
+      "Eve teasing"
+    ],
+    "sources": [
+      "Travel Advisories",
+      "Reviews"
+    ],
+    "lastVerified": "2025-12-31",
+    "coordinates": {
+      "lat": 19.0914,
+      "lng": 72.8241
+    }
+  },
+  {
+    "id": 48,
+    "name": "Nalanda Ruins",
+    "letter": "N",
+    "city": "Nalanda",
+    "state": "Bihar",
+    "image": "images/nalanda.jpeg",
+    "riskLevel": "Low",
+    "issuesReported": [
+      "Crowds"
+    ],
+    "sources": [
+      "Holidify",
+      "UNESCO"
+    ],
+    "lastVerified": "2025-12-28",
+    "coordinates": {
+      "lat": 25.1339,
+      "lng": 85.4413
+    }
+  },
+  {
+    "id": 49,
+    "name": "Puri Beach",
+    "letter": "P",
+    "city": "Puri",
+    "state": "Odisha",
+    "image": "images/puri_beach.jpeg",
+    "riskLevel": "Medium",
+    "issuesReported": [
+      "Drowning",
+      "Harassment"
+    ],
+    "sources": [
+      "Odisha Bytes",
+      "Police"
+    ],
+    "lastVerified": "2025-12-30",
+    "coordinates": {
+      "lat": 19.8134,
+      "lng": 85.8265
+    }
+  },
+  {
+    "id": 50,
+    "name": "Rock Garden Ranchi",
+    "letter": "R",
+    "city": "Ranchi",
+    "state": "Jharkhand",
+    "image": "images/rock_garden.jpeg",
+    "riskLevel": "Low",
+    "issuesReported": [
+      "None major"
+    ],
+    "sources": [
+      "ClearTrip",
+      "Family Reviews"
+    ],
+    "lastVerified": "2025-12-29",
+    "coordinates": {
+      "lat": 23.35,
+      "lng": 85.32
+    }
+  },
+  {
+    "id": "51",
+    "name": "Chilika Lake",
+    "letter":"C",
+    "state": "Odisha",
+    "country": "India",
+    "coordinates": {
+      "lat": 19.43,
+      "lng": 85.19
+    },
+    "riskLevel": "High",
+    "issuesReported": [
+      {
+        "problem": "Scam / Fraud",
+        "description": "Sold stones in the name of Precious gems at a very high price.",
+        "date": "2025-12-15",
+        "severity": "High"
+      }
+    ]
+    
+  }
+]
